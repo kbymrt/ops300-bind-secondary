@@ -10,6 +10,8 @@ RUN apt-get update && \
 RUN mkdir -p /var/cache/bind /run/named && \
     chown -R bind:bind /var/cache/bind /run/named
 
+COPY named.conf.local /etc/bind/named.conf.local
+
 EXPOSE 53/tcp 53/udp
 
 CMD ["/usr/sbin/named", "-g", "-u", "bind"]
